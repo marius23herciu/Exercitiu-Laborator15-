@@ -165,7 +165,7 @@ Studentii cu varsta de 25 de ani
 
             //
             var groupByStudents2 = students.GroupBy(s => s.Major);
-            Console.WriteLine("GroupBy students by major and name:");
+            Console.WriteLine("GroupBy students by major and orderBy name:");
             foreach (var group in groupByStudents2)
             {
 
