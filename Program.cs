@@ -175,6 +175,18 @@ Studentii cu varsta de 25 de ani
                     foreach (var student in orderByLastName)
                         Console.WriteLine(student);
                 }
+                if (group.Key == Student.MajorType.Informatics)
+                {
+                    var orderByLastName = group.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ThenBy(s => s.Age);
+                    foreach (var student in orderByLastName)
+                        Console.WriteLine(student);
+                }
+                if (group.Key == Student.MajorType.Languages)
+                {
+                    var orderByLastName = group.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ThenBy(s => s.Age);
+                    foreach (var student in orderByLastName)
+                        Console.WriteLine(student);
+                }
             }
         }
         private static List<Student> GetStudents =>
