@@ -165,30 +165,38 @@ Studentii cu varsta de 25 de ani
 
             //
             var groupByStudents2 = students.GroupBy(s => s.Major);
-            Console.WriteLine("GroupBy students by major and orderBy name:");
+            Console.WriteLine("GroupBy major and OrderBy name:");
             foreach (var group in groupByStudents2)
             {
 
                 if (group.Key == Student.MajorType.Constructions)
                 {
-                    var orderByLastName = group.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ThenBy(s => s.Age);
+                    var orderByLastName = OrderByLastName(group);
                     foreach (var student in orderByLastName)
                         Console.WriteLine(student);
                 }
                 if (group.Key == Student.MajorType.Informatics)
                 {
-                    var orderByLastName = group.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ThenBy(s => s.Age);
+                    var orderByLastName = OrderByLastName(group);
                     foreach (var student in orderByLastName)
                         Console.WriteLine(student);
                 }
                 if (group.Key == Student.MajorType.Languages)
                 {
-                    var orderByLastName = group.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ThenBy(s => s.Age);
+                    var orderByLastName = OrderByLastName(group);
                     foreach (var student in orderByLastName)
                         Console.WriteLine(student);
                 }
             }
         }
+        public static IOrderedEnumerable<Student> OrderByLastName(IGrouping<Student.MajorType, Student> group)
+        {
+            var orderByLastName = group.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ThenBy(s => s.Age);
+            return orderByLastName;
+        }
+            
+
+
         private static List<Student> GetStudents =>
             new List<Student>()
             {
