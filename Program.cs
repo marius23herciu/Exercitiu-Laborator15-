@@ -146,6 +146,8 @@ Studentii cu varsta de 25 de ani
 .
 .*/
             var groupByStudents = students.GroupBy(s => s.Age);
+            
+
             Console.WriteLine("GroupBy students:");
             foreach (var group in groupByStudents)
             {
@@ -161,6 +163,19 @@ Studentii cu varsta de 25 de ani
                 }
             }
 
+            //
+            var groupByStudents2 = students.GroupBy(s => s.Major);
+            Console.WriteLine("GroupBy students by major and name:");
+            foreach (var group in groupByStudents2)
+            {
+
+                if (group.Key == Student.MajorType.Constructions)
+                {
+                    var orderByLastName = group.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ThenBy(s => s.Age);
+                    foreach (var student in orderByLastName)
+                        Console.WriteLine(student);
+                }
+            }
         }
         private static List<Student> GetStudents =>
             new List<Student>()
